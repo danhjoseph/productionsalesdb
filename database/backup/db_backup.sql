@@ -137,7 +137,6 @@ CREATE TABLE IF NOT EXISTS `OrderDetails` (
 -- SAMPLE DATA
 -- -----------------------------------------------------
 INSERT INTO `Studios` (
-    `studioID`,
     `studioName`,
     `contactName`,
     `contactEmail`,
@@ -148,7 +147,6 @@ INSERT INTO `Studios` (
     `zipCode`
   )
 VALUES (
-    1,
     'Netflix Productions',
     'Wendy Czerkawski',
     'wendyc@netflix.com',
@@ -159,7 +157,6 @@ VALUES (
     '91210'
   ),
   (
-    2,
     'Marvel Productions',
     'John Bubins',
     'johnb@marvel.com',
@@ -170,18 +167,16 @@ VALUES (
     '91210'
   ),
   (
-    3,
     'Disney Studios LLC',
     'Evan Handoles',
     'evanh@disney.com',
     '321 Disney Lane',
-    'Buidling 7',
+    'Building 7',
     'Los Angeles',
     'CA',
     '91210'
   ),
   (
-    4,
     'TPS Productions',
     'Tyler Terry',
     'tylert@tpsprod.com',
@@ -192,7 +187,6 @@ VALUES (
     '30318'
   ),
   (
-    5,
     'Steiner Studios',
     'Brett Hartman',
     'bretth@steinerstudios.com',
@@ -203,7 +197,6 @@ VALUES (
     '10016'
   ),
   (
-    7,
     'Blackhawl Studios INC',
     'Gary Roche',
     'garyr@blackhawlstds.com',
@@ -212,9 +205,18 @@ VALUES (
     'Atlanta',
     'GA',
     '30316'
+  ),
+  (
+    'Green Lantern Studios',
+    'John Logan',
+    'johnl@greenlantern.com',
+    '15-21 9th Ave',
+    'Suite 400',
+    'New York',
+    'NY',
+    '10116'
   );
 INSERT INTO `Productions` (
-    `productionID`,
     `studioID`,
     `showName`,
     `contactName`,
@@ -226,7 +228,6 @@ INSERT INTO `Productions` (
     `zipCode`
   )
 VALUES (
-    1,
     3,
     'Great Baking Show',
     'Abdul Rena',
@@ -238,7 +239,6 @@ VALUES (
     '30316'
   ),
   (
-    2,
     3,
     'Real Housedogs Season 24',
     'Butch Uppercut',
@@ -250,7 +250,6 @@ VALUES (
     '30031'
   ),
   (
-    3,
     4,
     'Avengers 17: How Hawkeye Got His Groove Back',
     'Lance Steel',
@@ -262,7 +261,6 @@ VALUES (
     '90210'
   ),
   (
-    4,
     NULL,
     'Madeas Nose Job',
     'Pyler Terry',
@@ -274,7 +272,6 @@ VALUES (
     '30103'
   ),
   (
-    5,
     NULL,
     'Madea vs Gout',
     'Myler Sterry',
@@ -286,7 +283,6 @@ VALUES (
     '30103'
   ),
   (
-    6,
     5,
     'Sneak King X Glee',
     'Madeline Kury',
@@ -298,7 +294,6 @@ VALUES (
     '10019'
   ),
   (
-    7,
     1,
     'Holy Moly Tony!',
     'Chad Winkle',
@@ -308,26 +303,34 @@ VALUES (
     'Salt Lake City',
     'UT',
     '12903'
+  ),
+  (
+    7,
+    'We Walkin',
+    'Grant Jonmpkins',
+    'grantj@wewalkinprod.com',
+    '12345 Main St',
+    '',
+    'Altarna',
+    'NM',
+    '87101'
   );
-INSERT INTO `SalesReps` (`salesRepID`, `salesRepName`, `salesRepEmail`)
-VALUES (1, 'Dan Joseph', 'danj@sales.com'),
-  (2, 'Mike Row', 'mikem@sales.com'),
-  (3, 'Nicole Lans', 'nicolel@sales.com'),
-  (4, 'Amanda Stone', 'amandas@sales.com'),
-  (5, 'John Francis', 'johnf@sales.com'),
-  (6, 'Ethan Reimer', 'ethanr@sales.com');
-INSERT INTO `TermsCodes` (`termsCodeID`, `termCode`, `termName`)
-VALUES (1, '10', 'NET10'),
-  (2, '15', 'NET15'),
-  (3, '20', 'NET20'),
-  (4, '30', 'NET30'),
-  (5, '60', 'NET60'),
-  (6, '90', 'NET90'),
-  (7, '120', 'NET120'),
-  (8, '180', 'NET180'),
-  (9, '365', 'NET365');
+INSERT INTO `SalesReps` (`salesRepName`, `salesRepEmail`)
+VALUES ('Dan Joseph', 'danj@sales.com'),
+  ('Mike Row', 'mikem@sales.com'),
+  ('Nicole Lans', 'nicolel@sales.com'),
+  ('Amanda Stone', 'amandas@sales.com'),
+  ('John Francis', 'johnf@sales.com'),
+  ('Ethan Reimer', 'ethanr@sales.com'),
+  ('Kat Steiner', 'kats@sales.com');
+INSERT INTO `TermsCodes` (`termCode`, `termName`)
+VALUES ('10', 'NET10'),
+  ('15', 'NET15'),
+  ('20', 'NET20'),
+  ('30', 'NET30'),
+  ('60', 'NET60'),
+  ('90', 'NET90');
 INSERT INTO `Vendors` (
-    `vendorID`,
     `vendorName`,
     `contactName`,
     `contactEmail`,
@@ -338,7 +341,6 @@ INSERT INTO `Vendors` (
     `zipCode`
   )
 VALUES (
-    1,
     'Pectrole',
     'Mordon Gore',
     'mordong@pectrole.com',
@@ -349,8 +351,7 @@ VALUES (
     '76293'
   ),
   (
-    2,
-    'Zaxel',
+    'Zinael',
     'Glenjamin Zansers',
     'glenjaminz@zaxel.com',
     '16 Boulevard NE',
@@ -360,7 +361,6 @@ VALUES (
     '00926'
   ),
   (
-    3,
     'Lomos',
     'Shlomo Merchenski',
     'shlomom@lomos.com',
@@ -371,7 +371,6 @@ VALUES (
     '10016'
   ),
   (
-    4,
     'Callaham Automoto',
     'Dave Callaham',
     'davec@callaham.com',
@@ -380,68 +379,82 @@ VALUES (
     'Boston',
     'MA',
     '29756'
+  ),
+  (
+    'Luckee Ten Cents',
+    'Big Jim Hampton',
+    'bigjim@ltc.com',
+    'PO Box 129',
+    '',
+    'San Francsico',
+    'CA',
+    '90210'
   );
 INSERT INTO `Products` (
-    `productID`,
     `productName`,
     `cost`,
     `retailPrice`,
     `vendorID`
   )
-VALUES (1, 'Wireless Sticks', '139.09', '499.99', 1),
-  (2, 'Blomight', '1298.12', '4999.99', 4),
-  (3, 'Machanio', '45.12', '103.45', 1),
-  (4, 'Screws', '0.01', '1.00', 3),
-  (5, 'Mustache Feet', '421.99', '505.10', 1),
+VALUES ('Wireless Sticks', '139.09', '499.99', 1),
+  ('Blomight', '1298.12', '4999.99', 4),
+  ('Machanio', '45.12', '103.45', 1),
+  ('Screws', '0.01', '1.00', 3),
+  ('Mustache Feet', '421.99', '505.10', 1),
   (
-    6,
     'Grip to Ground Adapter',
     '249.99',
     '349.99',
     1
   ),
-  (7, 'Electric Eels', '205.10', '401.33', 4),
+  ('Electric Eels', '205.10', '401.33', 4),
   (
-    8,
     'Premium Burlap Cargo Shorts',
     '34.93',
     '192.09',
     2
-  );
+  ),
+  ('Cat Chasers', '12.99', '99.99', 1),
+  ('C-47', '1.99', '3.99', 4);
 INSERT INTO `Orders` (
-    `orderID`,
     `productionID`,
     `termsCodeID`,
     `salesRepID`,
     `orderDate`,
     `purchaseOrder`
   )
-VALUES (1, 1, 1, 2, '2022-07-08 22:08:15', '1903'),
-  (2, 1, 1, 2, '2022-06-12 22:08:45', '12984'),
-  (3, 4, 2, 4, '2022-07-08 22:11:32', '14A12'),
-  (4, 5, 3, 1, '2022-07-09 17:17:14', 'A103'),
-  (5, 5, 4, 1, '2022-07-09 17:17:14', 'A104'),
-  (6, 6, 5, 4, '2022-07-09 17:18:58', '2148'),
-  (7, 6, 6, 5, '2022-07-09 17:18:58', '1210'),
-  (8, 7, 4, 6, '2022-07-18 00:36:06', 'A098');
+VALUES (1, 1, 2, '2022-07-08 22:08:15', '1903'),
+  (1, 1, 2, '2022-06-12 22:08:45', '12984'),
+  (4, 2, 4, '2022-07-08 22:11:32', '14A12'),
+  (5, 3, 1, '2022-07-09 17:17:14', 'A103'),
+  (5, 4, 1, '2022-07-09 17:17:14', 'A104'),
+  (6, 5, 4, '2022-07-09 17:18:58', '2148'),
+  (6, 3, 3, '2022-07-09 17:18:58', '1210'),
+  (7, 4, 6, '2022-07-18 00:36:06', 'A098');
 INSERT INTO `OrderDetails` (
-    `orderDetailsID`,
     `orderID`,
     `productID`,
     `orderQty`,
     `unitPrice`,
     `totalAmount`
   )
-VALUES (1, 1, 2, 1, '99.00', '99.00'),
-  (2, 3, 1, 2, '40.00', '80.00'),
-  (3, 2, 4, 100, '1.00', '100.00'),
-  (4, 4, 6, 1, '349.00', '349.00'),
-  (5, 4, 3, 2, '200.00', '400.00'),
-  (6, 5, 5, 1, '124.00', '124.00'),
-  (7, 6, 6, 1, '400.00', '400.00'),
-  (8, 7, 5, 2, '200.00', '400.00'),
-  (9, 7, 3, 2, '11.00', '22.00'),
-  (10, 8, 7, 12, '302.99', '3635.88'),
-  (11, 8, 4, 100, '1.00', '100.00');
+VALUES (2, 1, '1', '99.00', '99.00'),
+  (1, 2, '2', '40.00', '80.00'),
+  (4, 3, '100', '1.00', '100.00'),
+  (6, 1, '1', '349.00', '349.00'),
+  (3, 2, '2', '200.00', '400.00'),
+  (5, 1, '1', '124.00', '124.00'),
+  (5, 1, '1', '99.00', '99.00'),
+  (4, 2, '2', '40.00', '80.00'),
+  (3, 3, '100', '1.00', '100.00'),
+  (3, 1, '1', '349.00', '349.00'),
+  (2, 2, '2', '200.00', '400.00'),
+  (2, 1, '1', '124.00', '124.00'),
+  (4, 1, '1', '99.00', '99.00'),
+  (3, 2, '2', '40.00', '80.00'),
+  (2, 3, '100', '1.00', '100.00'),
+  (2, 1, '1', '349.00', '349.00'),
+  (1, 2, '2', '200.00', '400.00'),
+  (1, 1, '1', '124.00', '124.00');
 SET FOREIGN_KEY_CHECKS = 1;
 COMMIT;

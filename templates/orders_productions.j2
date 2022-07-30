@@ -24,7 +24,6 @@
                     <th>{{key}}</th>
                 {% endfor %}
                 <th>View Order</th>
-                <th>Edit</th>
                 <th>Delete</th>
             </tr>
         </thead>
@@ -35,9 +34,6 @@
                     <td>{{production[val]}}</td>
                 {% endfor %}
                 <td><a href="/orders/invoice/{{ production['Order ID'] }}" class="btn btn-secondary">Invoice</a>
-                </td>
-                <td>
-                    <a href="/orders/edit/{{ production[ 'Order ID' ]}}"><button type="submit" class="btn btn-info">Edit</button></a>
                 </td>
                 <td>
                     <a href="/orders/delete/{{ production[ 'Order ID' ] }}"><button type="submit" class="btn btn-danger">Delete</button><a>
