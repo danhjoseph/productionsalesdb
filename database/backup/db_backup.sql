@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `Productions` (
   PRIMARY KEY (`productionID`),
   INDEX `StudioID_idx` (`studioID` ASC) VISIBLE,
   CONSTRAINT `StudioID` FOREIGN KEY (`studioID`) REFERENCES `Studios` (`studioID`) ON DELETE
-  SET NULL ON UPDATE NO ACTION
+  SET NULL ON UPDATE CASCADE
 );
 -- -----------------------------------------------------
 -- Table `SalesReps`
@@ -390,7 +390,7 @@ INSERT INTO `Products` (
   )
 VALUES (1, 'Wireless Sticks', '139.09', '499.99', 1),
   (2, 'Blomight', '1298.12', '4999.99', 4),
-  (3, 'Machanio', '45.12', '103.45', 5),
+  (3, 'Machanio', '45.12', '103.45', 1),
   (4, 'Screws', '0.01', '1.00', 3),
   (5, 'Mustache Feet', '421.99', '505.10', 1),
   (
@@ -398,7 +398,7 @@ VALUES (1, 'Wireless Sticks', '139.09', '499.99', 1),
     'Grip to Ground Adapter',
     '249.99',
     '349.99',
-    5
+    1
   ),
   (7, 'Electric Eels', '205.10', '401.33', 4),
   (

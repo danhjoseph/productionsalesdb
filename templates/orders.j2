@@ -35,7 +35,6 @@
                         <th>{{key}}</th>
                     {% endfor %}
                     <th>View Order</th>
-                    <th>Edit</th>
                     <th>Delete</th>
                 </tr>
             </thead>
@@ -47,9 +46,6 @@
                     {% endfor %}
                     <td>
                     <a href="/orders/invoice/{{order['Order ID']}}"><button type="submit" class="btn btn-secondary">Invoice</button></a>
-                    </td>
-                    <td>
-                    <a href="/orders/edit/{{ order[ 'Order ID' ]}}"><button type="submit" class="btn btn-info">Edit</button></a>
                     </td>
                     <td>
                     <a href="/orders/delete/{{ order[ 'Order ID' ] }}"><button type="submit" class="btn btn-danger">Delete</button><a>

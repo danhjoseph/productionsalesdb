@@ -11,6 +11,7 @@
                     <th>{{key}}</th>
                 {% endfor %}
             </tr>
+            
         </thead>
         <tbody>
             {% for order in orders %}
@@ -28,6 +29,7 @@
                 {% for key in orderdetails[0].keys() %}
                     <th>{{key}}</th>
                 {% endfor %}
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -36,6 +38,9 @@
                 {% for val in product.keys() %}
                     <td>{{product[val]}}</td>
                 {% endfor %}
+                 <td>
+                    <a href="/orders/delete/line/{{ product['orderdetailsid'] }}"><button type="submit" class="btn btn-danger">Delete</button><a>
+                </td>
             {% endfor %}
         </tbody>
     </table>
