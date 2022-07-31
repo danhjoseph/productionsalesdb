@@ -38,10 +38,45 @@ def productions():
         return redirect('/productions')
 
 
+@ app.route('/productions/edit/<int:id>', methods=['GET', 'POST'])
+def edit_production(id):
+    if request.method == 'GET':
+        query = "SELECT studios.studioName, productions.showName, productions.productionID, productions.contactName, productions.contactEmail, productions.addressLine1, productions.addressLine2, productions.city, productions.state, productions.zipCode FROM Productions LEFT JOIN Studios ON studios.studioID = productions.studioID WHERE productionID = %s;"
+        query2 = "SELECT studioID, studioName FROM Studios;"
+        conn = connection()
+        cursor = conn.cursor()
+        cursor.execute(query, (id))
+        results = cursor.fetchone()
+        cursor.execute(query2)
+        results2 = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return render_template('productions_edit.j2', production=results, studios=results2)
+    elif request.method == 'POST':
+        query = "UPDATE Productions SET studioID = %s, showName = %s, contactName = %s, contactEmail = %s, addressLine1 = %s, addressLine2 = %s, city = %s, state = %s, zipCode = %s WHERE productionID = %s;"
+        editStudio = request.form['editStudio']
+        conn = connection()
+        cursor = conn.cursor()
+        if editStudio == 'None':
+            # if no studio is selected, set studioID to null
+            cursor.execute(
+                "UPDATE Productions SET studioID = NULL WHERE productionID = %s;", (id))
+            query2 = "UPDATE Productions SET showName = %s, contactName = %s, contactEmail = %s, addressLine1 = %s, addressLine2 = %s, city = %s, state = %s, zipCode = %s WHERE productionID = %s;"
+            cursor.execute(query2, (request.form['editName'], request.form['editContact'], request.form['editEmail'],
+                                    request.form['editAddress'], request.form['editAddress2'], request.form['editCity'], request.form['editState'], request.form['editZip'], id))
+        else:
+            cursor.execute(query, (editStudio, request.form['editName'], request.form['editContact'], request.form['editEmail'],
+                                   request.form['editAddress'], request.form['editAddress2'], request.form['editCity'], request.form['editState'], request.form['editZip'], id))
+        conn.commit()
+        cursor.close()
+        conn.close()
+        return redirect('/productions')
+
+
 @ app.route('/orders', methods=['GET', 'POST'])
 def orders():
     if request.method == 'GET':
-        query = "SELECT orders.orderid as 'Order ID', studios.studioName as Studio, productions.showName as Production, termscodes.termName as Terms, salesreps.salesRepName as 'Sales Rep', orderDate as 'Order Date', purchaseOrder as 'Purchase Order', (SELECT SUM(totalAmount) FROM OrderDetails WHERE orders.orderid = orderdetails.orderid) as 'Total Invoice Amount' FROM Orders INNER JOIN orderdetails ON orders.orderid = orderdetails.orderid INNER JOIN productions ON orders.productionid = productions.productionid INNER JOIN salesreps ON orders.salesrepid = salesreps.salesrepid INNER JOIN termscodes ON termscodes.termscodeid = orders.termscodeid LEFT JOIN studios ON studios.studioID = productions.studioID GROUP BY orders.orderid ORDER BY orders.orderid ASC;"
+        query = "SELECT orders.orderid as 'Order ID', IFNULL(studios.studioName, 'None') as Studio, productions.showName as Production, termscodes.termName as Terms, salesreps.salesRepName as 'Sales Rep', orderDate as 'Order Date', purchaseOrder as 'Purchase Order', (SELECT SUM(totalAmount) FROM OrderDetails WHERE orders.orderid = orderdetails.orderid) as 'Total Invoice Amount' FROM Orders INNER JOIN orderdetails ON orders.orderid = orderdetails.orderid INNER JOIN productions ON orders.productionid = productions.productionid INNER JOIN salesreps ON orders.salesrepid = salesreps.salesrepid INNER JOIN termscodes ON termscodes.termscodeid = orders.termscodeid LEFT JOIN studios ON studios.studioID = productions.studioID GROUP BY orders.orderid ORDER BY orders.orderid ASC;"
         query2 = "SELECT showName, productionID FROM Productions;"
         query3 = "SELECT salesRepName, salesRepID FROM SalesReps;"
         query4 = "SELECT termName, termscodeid FROM TermsCodes;"
