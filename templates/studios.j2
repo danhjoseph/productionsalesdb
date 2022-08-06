@@ -2,37 +2,6 @@
 
 {% block content %}
 
-{# Table of ALL studios #}
-<div class = "container">
-<legend class="d-flex float-none w-auto p-2 justify-content-center">All Studios</legend>
-    <table class="table">
-        <thead class="align-center text-center">
-            <tr>
-                {% for key in studios[0].keys() %}
-                    <th>{{key}}</th>
-                {% endfor %}
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for studio in studios %}
-            <tr class="align-middle text-center">
-                {% for val in studio.keys() %}
-                    <td>{{studio[val]}}</td>
-                {% endfor %}
-                <td>
-                    <a href="/studios/edit/{{ studio[ 'ID' ]}}"><button type="submit" class="btn btn-info">Edit</button></a>
-                </td>
-                <td>
-                    <a href="/studios/delete/{{ studio['ID'] }}"><button type="submit" class="btn btn-danger">Delete</button><a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
-
 {# Container for new studio AND production search by studio #}
 <div class="d-flex justify-content-center">
     {# New studio form #}
@@ -156,6 +125,39 @@
         </div>
     </div>
 </div>
+
+{# Table of ALL studios #}
+<div class = "container">
+<legend class="d-flex float-none w-auto p-2 justify-content-center">All Studios</legend>
+    <table class="table">
+        <thead class="align-center text-center">
+            <tr>
+                {% for key in studios[0].keys() %}
+                    <th>{{key}}</th>
+                {% endfor %}
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for studio in studios %}
+            <tr class="align-middle text-center">
+                {% for val in studio.keys() %}
+                    <td>{{studio[val]}}</td>
+                {% endfor %}
+                <td>
+                    <a href="/studios/edit/{{ studio[ 'ID' ]}}"><button type="submit" class="btn btn-info">Edit</button></a>
+                </td>
+                <td>
+                    <a href="/studios/delete/{{ studio['ID'] }}"><button type="submit" class="btn btn-danger">Delete</button><a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
 
 {%- endblock content %}
 

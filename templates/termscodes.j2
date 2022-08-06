@@ -2,6 +2,24 @@
 
 {% block content %}
 
+
+<form class="container" style="max-width:35vw" action="" method="POST">
+    <legend class="float-none w-auto p-2 text-center">Add TermCode</legend>
+    <div class= "row g-3 justify-content-center">
+        <div class="col-md-2 text-center">
+            <label for="inputTermCode" class="form-label">TermCode</label>
+            <input type="text" class="form-control" id="inputTermCode" name="inputTermCode" required>
+        </div>
+        <div class="col-md-6 text-center">
+            <label for="inputDescription" class="form-label">Description</label>
+             <input type="text" class="form-control" id="inputDescription" name="inputDescription" required>
+        </div>
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>  
+</form>
+
 <div class="container" style="max-width:35vw">
 <legend class="d-flex float-none w-auto p-2 justify-content-center">Terms Codes</legend>
     <table class="table">
@@ -23,21 +41,5 @@
     </table>
 </div>
 
-<form class="container" style="max-width:35vw" action="" method="POST">
-    <legend class="float-none w-auto p-2 text-center">Add TermCode</legend>
-    <div class= "row g-3 justify-content-center">
-        <div class="col-md-2 text-center">
-            <label for="inputTermCode" class="form-label">TermCode</label>
-            <input type="text" class="form-control" id="inputTermCode" name="inputTermCode" required>
-        </div>
-        <div class="col-md-6 text-center">
-            <label for="inputDescription" class="form-label">Description</label>
-             <input type="text" class="form-control" id="inputDescription" name="inputDescription" required>
-        </div>
-        <div class="col-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </div>  
-</form>
 
 {% endblock %}

@@ -2,27 +2,6 @@
 
 {% block content %}
 
-{# build ALL products table #}
-<div class="container">
-<legend class="d-flex float-none w-auto p-2 justify-content-center">Available Products</legend>
-    <table class="table">
-        <thead class="align-center text-center">
-            <tr>
-                {% for key in products[0].keys() %}
-                    <th>{{key}}</th>
-                {% endfor %}
-            </tr>
-        <tbody>
-            {% for products in products %}
-                <tr class="align-middle text-center">
-                    {% for val in products.keys() %}
-                    <td>{{products[val]}}</td>
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
 
 {# container the CREATE form #}
 <form class="container" style="max-width:35vw" action="" method="POST">
@@ -54,5 +33,29 @@
         </div>
     </div>  
 </form>
+
+{# build ALL products table #}
+<div class="container">
+<legend class="d-flex float-none w-auto p-2 justify-content-center">Available Products</legend>
+    <table class="table">
+        <thead class="align-center text-center">
+            <tr>
+                {% for key in products[0].keys() %}
+                    <th>{{key}}</th>
+                {% endfor %}
+            </tr>
+        <tbody>
+            {% for products in products %}
+                <tr class="align-middle text-center">
+                    {% for val in products.keys() %}
+                    <td>{{products[val]}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
 
 {% endblock %}

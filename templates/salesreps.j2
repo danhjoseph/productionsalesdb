@@ -2,6 +2,23 @@
 
 {% block content %}
 
+<form class="container" style="max-width:35vw" action="" method="POST">
+    <legend class="float-none w-auto p-2 text-center">Add Sales Rep</legend>
+    <div class= "row g-3 justify-content-center">
+        <div class="col-md-6">
+            <label for="inputSalesName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="inputSalesName" name="inputSalesName" required>
+        </div>
+        <div class="col-md-6">
+            <label for="inputEmail" class="form-label">Email</label>
+             <input type="email" class="form-control" id="inputEmail" name="inputEmail" required>
+        </div>
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>  
+</form>
+
 <div class="container" style="max-width:35vw">
 <legend class="d-flex float-none w-auto p-2 justify-content-center">Sales Reps</legend>
     <table class="table">
@@ -23,21 +40,6 @@
     </table>
 </div>
 
-<form class="container" style="max-width:35vw" action="" method="POST">
-    <legend class="float-none w-auto p-2 text-center">Add Sales Rep</legend>
-    <div class= "row g-3 justify-content-center">
-        <div class="col-md-6">
-            <label for="inputSalesName" class="form-label">Name</label>
-            <input type="text" class="form-control" id="inputSalesName" name="inputSalesName" required>
-        </div>
-        <div class="col-md-6">
-            <label for="inputEmail" class="form-label">Email</label>
-             <input type="email" class="form-control" id="inputEmail" name="inputEmail" required>
-        </div>
-        <div class="col-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </div>  
-</form>
+
 
 {% endblock %}

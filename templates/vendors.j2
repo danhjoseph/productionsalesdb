@@ -1,28 +1,6 @@
 {% extends "nav_footer.j2" %}
 
 {% block content %}
-{# build ALL vendors table #}
-<div class = "container">
-<legend class="d-flex float-none w-auto p-2 justify-content-center">All Vendors</legend>
-    <table class="table">
-        <thead class="align-center text-center">
-            <tr>
-                {% for key in vendors[0].keys() %}
-                    <th>{{key}}</th>
-                {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for vendor in vendors %}
-            <tr class="align-middle text-center">
-                {% for val in vendor.keys() %}
-                    <td>{{vendor[val]}}</td>
-                {% endfor %}
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
-
 {# container holds two containers - one for the CREATE form and one for FILTERED SEARCH table #}
 <div class="d-flex justify-content-center">
     <div class="d-flex justify-content-center">
@@ -145,4 +123,28 @@
         </div>
     </div>
 </div>
+
+{# build ALL vendors table #}
+<div class = "container">
+<legend class="d-flex float-none w-auto p-2 justify-content-center">All Vendors</legend>
+    <table class="table">
+        <thead class="align-center text-center">
+            <tr>
+                {% for key in vendors[0].keys() %}
+                    <th>{{key}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for vendor in vendors %}
+            <tr class="align-middle text-center">
+                {% for val in vendor.keys() %}
+                    <td>{{vendor[val]}}</td>
+                {% endfor %}
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
 {% endblock %}
